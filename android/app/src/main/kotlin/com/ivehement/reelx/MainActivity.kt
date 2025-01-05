@@ -1,0 +1,5 @@
+package com.ivehement.reelx
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
