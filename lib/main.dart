@@ -7,6 +7,7 @@ import 'package:reelx/pages/home/view/home.dart';
 import 'package:reelx/pages/social/instagram/view/instagram.dart';
 import 'package:reelx/pages/social/whatsapp/view/whatsapp.dart';
 import 'package:reelx/utils/helper/ads.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reelx/utils/styles.dart';
 import 'package:get/get.dart';
 import 'package:reelx/utils/themes.dart';
@@ -24,35 +25,35 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   await GetStorage.init();
-  await Future.wait([
-    // precachePicture(
-    //   SvgPicture.asset('assets/images/instagram_glass_reelx.svg')
-    //       .pictureProvider,
-    //   null,
-    // ),
-    // precachePicture(
-    //   SvgPicture.asset('assets/images/whatsapp_glass_reelx.svg')
-    //       .pictureProvider,
-    //   null,
-    // ),
-    // precachePicture(
-    //   SvgPicture.asset('assets/images/logo_reelx.svg').pictureProvider,
-    //   null,
-    // ),
-  ]).then((_) => runApp(const MyApp())).catchError((err) {
-    runApp(const MyApp());
-  });
+
+  await _precacheSvgAssets();
+
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+Future<void> _precacheSvgAssets() async {
+  try {
+    final svgPaths = [
+      'assets/images/instagram_glass_reelx.svg',
+      'assets/images/whatsapp_glass_reelx.svg',
+      'assets/images/logo_reelx.svg',
+    ];
+
+    for (String path in svgPaths) {
+      final loader = SvgAssetLoader(path);
+      svg.cache
+          .putIfAbsent(loader.cacheKey(null), () => loader.loadBytes(null));
+    }
+  } catch (error) {
+    debugPrint('Error during SVG asset caching: $error');
+  }
+}
+
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final mc = Get.put(MainController());
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
     final isDarkMode = box.read('reelx_mode') ?? false;
 
     return GetMaterialApp(
-      title: 'Reelx',
+      title: 'ReelX',
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
       darkTheme: Themes.dark,

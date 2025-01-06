@@ -130,7 +130,7 @@ class WhatsAppController extends GetxController {
     saveFile(path, social: 'whatsapp');
     Get.snackbar(
       'Downloaded',
-      'location: ~Internal storage/Download/Reelx/WhatsAppreelx',
+      'location: ~Internal storage/Download/Reelx',
       snackPosition: SnackPosition.TOP,
       duration: const Duration(seconds: 2),
       backgroundColor: context.theme.colorScheme.background,

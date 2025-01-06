@@ -31,7 +31,7 @@ class ImageViewer extends StatelessWidget {
     saveFile(paths[whatsAppController.currentImagePathIndex.value]);
     Get.snackbar(
       'Downloaded',
-      'location: ~Internal storage/Download/Reelx/WhatsAppreelx',
+      'location: ~Internal storage/Download/Reelx',
       snackPosition: SnackPosition.TOP,
       duration: const Duration(seconds: 2),
       backgroundColor: Styles.secondaryBackgrondColor,

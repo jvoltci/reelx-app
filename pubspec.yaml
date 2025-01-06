@@ -14,7 +14,7 @@ dependencies:
   get: ^4.6.1
   dio: ^5.5.0+1
   video_player: ^2.9.2
-  google_mobile_ads: ^5.1.0
+  google_mobile_ads: ^5.2.0
   firebase_messaging: ^15.0.4
   device_info_plus: ^11.2.0
   get_storage: ^2.1.1
@@ -28,6 +28,7 @@ dependencies:
   saf: ^1.0.3+4
   permission_handler: ^10.2.0
   carousel_slider: ^5.0.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

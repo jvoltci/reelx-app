@@ -20,7 +20,6 @@ class _WhatsAppScreenState extends State<WhatsAppScreen>
 
   @override
   void initState() {
-    Get.put(WhatsAppController(context));
     loadFirstTab();
     _whatsappTabController =
         TabController(length: 2, vsync: this, initialIndex: 0);

@@ -18,11 +18,11 @@ class PathConstants {
       'Android/media/com.whatsapp.w4b/WhatsApp Business/Media/.Statuses';
   static const String whatsappGBOldPath = 'GBWhatsApp/Media/.Statuses';
 
-  static const String reelxWhatsappPath = 'Download/Reelx/WhatsAppreelx';
+  static const String reelxWhatsappPath = 'Download/Reelx/WhatsApp';
   static const String reelxwhatsappThumbPath =
       'Download/Reelx/.thumbs/.whatsapp/';
 
-  static const String reelxInstagramPath = 'Download/Reelx/Instagramreelx';
+  static const String reelxInstagramPath = 'Download/Reelx/Instagram';
   static const String reelxInstagramThumbPath =
       'Download/Reelx/.thumbs/.instagram/';
 

@@ -7,6 +7,7 @@ import 'package:reelx/pages/home/widgets/drawer_section.dart';
 import 'package:reelx/pages/home/widgets/social_card.dart';
 import 'package:get/get.dart';
 import 'package:reelx/pages/home/widgets/tron_container.dart';
+import 'package:reelx/pages/social/whatsapp/controller/whatsapp_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late HomeController homeController;
   @override
   void initState() {
+    Get.put(WhatsAppController(context));
     homeController = Get.put(HomeController());
     super.initState();
   }

@@ -41,7 +41,7 @@ class InstagramController extends GetxController {
   late BannerAd instaBottomBannerAd;
   var isInstaBottomBannerAdLoaded = false.obs;
 
-  var isreelxGranted = true.obs;
+  var isreelxGranted = false.obs;
   final androidVersion = h.androidVersion.value;
   var url = ''.obs;
   var isDownloadButtonDisabled = true.obs;
@@ -60,7 +60,7 @@ class InstagramController extends GetxController {
     super.onInit();
     createInstaBottomBannerAd();
     reelxDir.createSync(recursive: true);
-    checkreelxPermission();
+    checkReelxPermission();
     if (!dir.existsSync()) {
       dir.createSync(recursive: true);
     }
@@ -318,7 +318,7 @@ class InstagramController extends GetxController {
         await flutterLocalNotificationsPlugin.show(
           0,
           'Downloaded',
-          'location: ~Internal storage/Download/Reelx/Instagramreelx',
+          'location: ~Internal storage/Download/Reelx',
           platformChannelSpecifics,
           payload: '$path~$generated',
         );
@@ -364,8 +364,12 @@ class InstagramController extends GetxController {
         case "false":
           List<String> paths = [];
           paths.add(path!);
-          Get.to(() =>
-              ImageViewer(context: context, paths: paths, social: 'instagram'));
+          Get.to(() => ImageViewer(
+                context: context,
+                paths: paths,
+                social: 'instagram',
+                initialImageIndex: 0,
+              ));
           break;
         case "url":
           launchUrl(Uri(path: path));
@@ -382,10 +386,10 @@ class InstagramController extends GetxController {
   }
 
   handleWhatsAppPermissions() async {
-    await getSafPermission('reelx').then((_) => checkreelxPermission());
+    await getSafPermission('reelx').then((_) => checkReelxPermission());
   }
 
-  checkreelxPermission() async {
+  checkReelxPermission() async {
     var allowedDirectories = await Saf.getPersistedPermissionDirectories();
     if (allowedDirectories != null &&
         allowedDirectories.contains(PathConstants.reelxPath)) {
